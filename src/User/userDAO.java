@@ -24,7 +24,7 @@ public class userDAO {
 	}//mysql과 연동하는 함수
 	
 	public int login(String userId, String userPassword) {
-		String SQL = "INSERT INTO USER VALUES(?,?,?,?)";
+		String SQL = "SELECT userPassword FROM USER WHERE userId = ?";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			//preparedstatement-코드 안전성,가독성 높음/매개변수를 set해줘야함
@@ -44,6 +44,20 @@ public class userDAO {
 			e.printStackTrace();
 		}
 		return -2;//데이터베이스 오류
+	}
+	
+	public int join(user user) {
+		String SQL = "INSERT INTO mbbs VALUES(?,?,?,?)";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, user.getUserId());
+			pstmt.setString(1, user.getUserPassword());
+			pstmt.setString(1, user.getUserName());
+			pstmt.setString(1, user.getUserEmail());
+			return pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}return -1;
 	}
 	
 }

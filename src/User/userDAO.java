@@ -57,7 +57,7 @@ public class userDAO {
 			return pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
-		}return -1;
+		}return -1;//이미 있으니까 insert되지않고 나와서 -1을 리턴함
 	}
 	
 }

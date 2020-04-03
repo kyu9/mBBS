@@ -3,10 +3,10 @@
 <%@ page import = "java.io.PrintWriter" %>
 <%@ page import = "User.userDAO"%> 
 <jsp:useBean id="user" class="User.user" scope="page"/>
-//자바빈 객체를 생성 id-생성될 자바빈 객체이름, class-객체가 생성될 자바빈 클래스, scope-공유범
+<!-- 자바빈 객체를 생성 id-생성될 자바빈 객체이름, class-객체가 생성될 자바빈 클래스, scope-공유범위 -->
 <jsp:setProperty name="user" property="userId"/>
 <jsp:setProperty name="user" property="userPassword"/>
-//자바빈에 property값을 저장 name-자바빈객체의 이름, property-사용할propertydmldlfma
+<!-- 자바빈에 property값을 저장 name-자바빈객체의 이름, property-사용할property-->
 
 <!DOCTYPE html>
 <html>

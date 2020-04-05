@@ -12,8 +12,9 @@ public class userDAO {
 	
 	public userDAO() {
 		try {
-			String dbURL = "jdbc:mysql://localhost:3306/mbbs";
-						//mysql protocol/도메인:포트/mbbs(table)로 접속하라
+			String dbURL = "jdbc:mysql://localhost:3306/mbbs?serverTimezone=Asia/Seoul";
+			//서버의 타임존이 있는데 기본적으로 default값이 없었기때문에 실행이 안되고있었음-> 자바상에서 아시아/서울로 설정한 코드
+			//mysql protocol/도메인:포트/mbbs(table)로 접속하라
 			String dbID = "root";
 			String dbPassword = "shim0329";
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -51,9 +52,9 @@ public class userDAO {
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, user.getUserId());
-			pstmt.setString(1, user.getUserPassword());
-			pstmt.setString(1, user.getUserName());
-			pstmt.setString(1, user.getUserEmail());
+			pstmt.setString(2, user.getUserPassword());
+			pstmt.setString(3, user.getUserName());
+			pstmt.setString(4, user.getUserEmail());
 			return pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
